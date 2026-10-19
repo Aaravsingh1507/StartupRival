@@ -36,10 +36,10 @@ export default function SaveIdeaButton({ idea, onSaveChange, className = '' }) {
     <button
       type="button"
       onClick={handleToggle}
-      className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all duration-200 cursor-pointer ${
+      className={`inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition duration-150 cursor-pointer ${
         isSaved
-          ? 'bg-white text-black border-white font-medium'
-          : 'bg-[#1D1D1D] text-[#A3A3A3] hover:text-white border-white/10 hover:border-white/25'
+          ? 'bg-white text-black border-white font-semibold'
+          : 'bg-transparent text-[#888888] hover:text-white border-[#2A2A2A] hover:bg-[#1A1A1A]'
       } ${className}`}
       title={isSaved ? 'Remove from saved ideas' : 'Save this opportunity'}
     >

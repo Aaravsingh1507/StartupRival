@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/lib/auth-context';
 import Button from './Button';
 import NotificationBell from './NotificationBell';
-import { Menu, X, ArrowUpRight, LogOut, Compass, LayoutDashboard, Landmark, Users, Settings } from 'lucide-react';
+import { Menu, X, LogOut, LayoutDashboard, Settings } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -21,17 +21,17 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#1F1F1F] transition-all">
+      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         {/* StartupRival Wordmark */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-black font-black text-sm tracking-tighter shadow-[0_2px_10px_rgba(255,255,255,0.2)]">
+        <Link href="/" className="flex items-center gap-2 group">
+          <div className="w-6 h-6 rounded-sm bg-white text-black text-xs font-bold flex items-center justify-center">
             SR
           </div>
-          <span className="font-semibold text-lg tracking-tight text-white group-hover:text-neutral-200 transition-colors">
-            Startup<span className="text-neutral-400 font-normal">Rival</span>
+          <span className="font-semibold text-white text-sm tracking-tight">
+            StartupRival
           </span>
-          <span className="text-[10px] tracking-wider uppercase px-1.5 py-0.5 rounded bg-white/10 text-neutral-300 font-mono ml-1">
+          <span className="bg-[#1A1A1A] border border-[#2A2A2A] text-[#888] text-xs px-2 py-0.5 rounded-sm ml-1">
             IND
           </span>
         </Link>
@@ -44,10 +44,10 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`text-sm tracking-wide transition-colors duration-150 ${
+                className={`text-sm transition ${
                   isActive
                     ? 'text-white font-medium'
-                    : 'text-[#A3A3A3] hover:text-white'
+                    : 'text-[#888] hover:text-white'
                 }`}
               >
                 {link.label}
@@ -62,35 +62,38 @@ export default function Navbar() {
           <NotificationBell />
 
           {user ? (
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <Link href="/dashboard">
                 <Button
-                  variant={pathname === '/dashboard' ? 'primary' : 'secondary'}
+                  variant="secondary"
                   size="sm"
                   className="gap-1.5"
                 >
                   <LayoutDashboard className="w-3.5 h-3.5" />
-                  Dashboard
+                  <span>Dashboard</span>
                 </Button>
               </Link>
               <Link href="/settings" title="Settings">
-                <button className="p-2 rounded-xl text-[#A3A3A3] hover:text-white hover:bg-white/5 transition-colors cursor-pointer" aria-label="Settings">
+                <button
+                  className="p-2 rounded-md hover:bg-[#1A1A1A] text-[#888] hover:text-white transition cursor-pointer"
+                  aria-label="Settings"
+                >
                   <Settings className="w-4 h-4" />
                 </button>
               </Link>
               <button
                 onClick={signOut}
                 title="Sign Out"
-                className="p-2 rounded-xl text-[#A3A3A3] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+                className="p-2 rounded-md hover:bg-[#1A1A1A] text-[#888] hover:text-white transition cursor-pointer"
                 aria-label="Sign Out"
               >
                 <LogOut className="w-4 h-4" />
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <Link href="/auth/login">
-                <Button variant="ghost" size="sm">
+                <Button variant="secondary" size="sm">
                   Sign In
                 </Button>
               </Link>
@@ -104,83 +107,67 @@ export default function Navbar() {
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex md:hidden items-center gap-1.5">
+        <div className="flex md:hidden items-center gap-2">
           <NotificationBell />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#A3A3A3] hover:text-white focus:outline-none cursor-pointer"
-            aria-label="Toggle navigation menu"
+            className="p-2 rounded-md text-[#888] hover:text-white hover:bg-[#1A1A1A]"
+            aria-label="Toggle mobile navigation"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-modal border-t border-white/10 px-5 pt-3 pb-6 flex flex-col gap-4">
-          <nav className="flex flex-col gap-2.5">
+        <div className="md:hidden bg-[#111111] border-b border-[#2A2A2A] px-6 py-4 space-y-3">
+          <div className="flex flex-col space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-sm py-2 text-[#A3A3A3] hover:text-white transition-colors"
+                className={`py-2 text-sm transition ${
+                  pathname === link.href ? 'text-white font-medium' : 'text-[#888] hover:text-white'
+                }`}
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/dashboard"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm py-2 text-white font-medium flex items-center gap-2"
-            >
-              <LayoutDashboard className="w-4 h-4" />
-              Founder Dashboard
-            </Link>
-            <Link
-              href="/settings"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm py-2 text-[#A3A3A3] hover:text-white flex items-center gap-2"
-            >
-              <Settings className="w-4 h-4" />
-              Account Settings
-            </Link>
-            <Link
-              href="/admin"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-sm py-2 text-[#737373] hover:text-white"
-            >
-              Admin Analytics
-            </Link>
-          </nav>
+          </div>
 
-          <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
+          <div className="pt-3 border-t border-[#1F1F1F] flex flex-col gap-2">
             {user ? (
-              <Button
-                variant="secondary"
-                size="md"
-                onClick={() => {
-                  signOut();
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full justify-center"
-              >
-                Sign Out ({user.email})
-              </Button>
-            ) : (
               <>
+                <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="secondary" size="sm" className="w-full justify-center gap-2">
+                    <LayoutDashboard className="w-4 h-4" />
+                    <span>Dashboard</span>
+                  </Button>
+                </Link>
+                <div className="flex items-center justify-between pt-1">
+                  <Link href="/settings" onClick={() => setMobileMenuOpen(false)} className="text-xs text-[#888] hover:text-white">
+                    Settings & Account
+                  </Link>
+                  <button onClick={signOut} className="text-xs text-red-400 hover:text-red-300">
+                    Sign Out
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="grid grid-cols-2 gap-2">
                 <Link href="/auth/login" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="secondary" size="md" className="w-full justify-center">
+                  <Button variant="secondary" size="sm" className="w-full justify-center">
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth/signup" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="primary" size="md" className="w-full justify-center">
+                  <Button variant="primary" size="sm" className="w-full justify-center">
                     Get Started
                   </Button>
                 </Link>
-              </>
+              </div>
             )}
           </div>
         </div>

@@ -3,14 +3,13 @@
 export default function ClayCard({
   children,
   className = '',
-  interactive = false,
+  elevated = false,
   scorecard = false,
   onClick,
   ...props
 }) {
-  const cardStyle = scorecard
-    ? 'clay-scorecard p-6'
-    : `clay-card p-6 ${interactive ? 'clay-card-interactive cursor-pointer' : ''}`;
+  const bgClass = elevated || scorecard ? 'bg-[#1A1A1A]' : 'bg-[#111111]';
+  const cardStyle = `${bgClass} border border-[#2A2A2A] rounded-xl p-5 transition`;
 
   return (
     <div

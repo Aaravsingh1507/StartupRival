@@ -63,25 +63,25 @@ function KickstartKitContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#080808] text-white selection:bg-white selection:text-black">
+    <div className="min-h-screen flex flex-col bg-[#0A0A0A] text-[#F5F5F5] selection:bg-white selection:text-black">
       <Navbar />
 
-      <main className="flex-1 pt-24 pb-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <main className="flex-1 pt-20 pb-16 px-6 py-8">
+        <div className="max-w-5xl mx-auto space-y-6">
           
           {/* Breadcrumb & Navigation */}
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-2 text-xs text-[#A3A3A3] hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 text-xs text-[#888888] hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Dashboard</span>
             </Link>
 
             <div className="flex items-center gap-2">
-              <span className="text-[11px] font-mono text-[#737373] px-2 py-0.5 rounded bg-white/5 border border-white/10 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block" />
+              <span className="text-xs text-[#888888] px-2.5 py-1 rounded bg-[#1A1A1A] border border-[#2A2A2A] flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E] inline-block" />
                 {cachedStatus}
               </span>
               <Button
@@ -97,24 +97,24 @@ function KickstartKitContent() {
           </div>
 
           {/* Hero Header Card */}
-          <ClayCard className="p-6 sm:p-8 space-y-4 border-white/15 bg-[#141414]">
+          <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-5 sm:p-6 space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#737373] px-2 py-0.5 rounded bg-white/5 border border-white/10">
+                <span className="text-xs uppercase tracking-wider text-[#888888] px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A]">
                   Phase 2 Roadmap
                 </span>
-                <span className="text-[10px] font-mono text-white px-2 py-0.5 rounded bg-white/10 flex items-center gap-1">
-                  <MapPin className="w-3 h-3" />
+                <span className="text-xs text-white px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] flex items-center gap-1">
+                  <MapPin className="w-3 h-3 text-[#888888]" />
                   {initialRegion}
                 </span>
-                <span className="text-[10px] font-mono text-[#A3A3A3] px-2 py-0.5 rounded bg-white/5">
+                <span className="text-xs text-[#888888] px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A]">
                   {initialSector}
                 </span>
               </div>
 
               <div className="text-right">
-                <span className="text-[10px] font-mono text-[#737373] uppercase block">Stage Progress</span>
-                <span className="text-xs font-mono font-semibold text-white px-2 py-0.5 rounded bg-white/10 inline-block mt-0.5">
+                <span className="text-xs uppercase tracking-wider text-[#555555] block">Stage Progress</span>
+                <span className="text-xs font-semibold text-white px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] inline-block mt-0.5">
                   Kit Generated (Step 3/4)
                 </span>
               </div>
@@ -124,37 +124,37 @@ function KickstartKitContent() {
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white leading-tight">
                 {initialName}
               </h1>
-              <p className="text-sm text-[#A3A3A3] max-w-3xl leading-relaxed">
+              <p className="text-sm text-[#888888] max-w-3xl leading-relaxed">
                 Actionable launch blueprint for {initialRegion}. Review verified state licenses, Central & State subsidy schemes, capital requirement breakdown in INR, and a 90-day execution checklist.
               </p>
             </div>
 
             {/* Quick-Hop Navigation Strip to other phases */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-3 print:hidden">
-              <span className="text-xs text-[#737373]">Next Actions:</span>
+            <div className="pt-4 border-t border-[#1F1F1F] flex flex-wrap items-center gap-3 print:hidden">
+              <span className="text-xs uppercase tracking-wider text-[#555555]">Next Actions:</span>
               <Link
                 href={`/competitor-radar/${encodeURIComponent(id)}?sector=${encodeURIComponent(initialSector)}&region=${encodeURIComponent(initialRegion)}&name=${encodeURIComponent(initialName)}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-transparent hover:bg-[#1A1A1A] border border-[#2A2A2A] text-xs text-white transition-colors"
               >
-                <Radar className="w-3.5 h-3.5" />
+                <Radar className="w-3.5 h-3.5 text-[#888888]" />
                 <span>Competitor Radar</span>
               </Link>
               <Link
                 href={`/gtm-guide/${encodeURIComponent(id)}?sector=${encodeURIComponent(initialSector)}&region=${encodeURIComponent(initialRegion)}&name=${encodeURIComponent(initialName)}`}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-transparent hover:bg-[#1A1A1A] border border-[#2A2A2A] text-xs text-white transition-colors"
               >
-                <Megaphone className="w-3.5 h-3.5" />
+                <Megaphone className="w-3.5 h-3.5 text-[#888888]" />
                 <span>Go-to-Market Strategy</span>
               </Link>
               <Link
                 href="/funding"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-transparent hover:bg-[#1A1A1A] border border-[#2A2A2A] text-xs text-white transition-colors"
               >
-                <ShieldCheck className="w-3.5 h-3.5" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#888888]" />
                 <span>Find Eligible Funding</span>
               </Link>
             </div>
-          </ClayCard>
+          </div>
 
           {/* Kit Details Accordion Section */}
           {loading ? (
@@ -173,7 +173,7 @@ function KickstartKitContent() {
 
 export default function KickstartKitPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#080808] flex items-center justify-center text-white font-mono text-sm">Loading Startup Kit...</div>}>
+    <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A] flex items-center justify-center text-white text-sm">Loading Startup Kit...</div>}>
       <KickstartKitContent />
     </Suspense>
   );

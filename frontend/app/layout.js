@@ -21,7 +21,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#080808",
+  themeColor: "#0A0A0A",
 };
 
 export default function RootLayout({ children }) {
@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className="min-h-full flex flex-col bg-[#080808] text-white selection:bg-white selection:text-black pb-16 md:pb-0">
+      <body className="min-h-full flex flex-col bg-[#0A0A0A] text-[#F5F5F5] selection:bg-white selection:text-black pb-16 md:pb-0">
         <AuthProvider>
           <ToastProvider>
             <NotificationProvider>

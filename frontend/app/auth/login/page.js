@@ -47,7 +47,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080808] text-white flex flex-col justify-center items-center px-4 py-12 relative selection:bg-white selection:text-black">
+    <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5] flex flex-col justify-center items-center px-4 py-12 relative selection:bg-white selection:text-black">
       {/* Background radial highlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-3xl pointer-events-none" />
 
@@ -55,32 +55,32 @@ export default function LoginPage() {
       <div className="w-full max-w-md mb-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 text-xs text-[#A3A3A3] hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 text-xs text-[#888888] hover:text-white transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to StartupRival</span>
         </Link>
       </div>
 
-      {/* Distraction-Free Monochrome Glass Card */}
-      <GlassPanel elevated className="w-full max-w-md p-8 sm:p-10 space-y-6 relative z-10 border-white/10">
+      {/* Monochrome Card */}
+      <div className="w-full max-w-md bg-[#111111] border border-[#2A2A2A] rounded-xl p-8 sm:p-10 space-y-6 relative z-10">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-10 h-10 rounded-xl bg-white text-black font-black text-sm flex items-center justify-center mx-auto shadow-md">
+          <div className="w-8 h-8 rounded-sm bg-white text-black font-bold text-xs flex items-center justify-center mx-auto">
             SR
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white">
             Welcome back
           </h1>
-          <p className="text-xs text-[#A3A3A3]">
+          <p className="text-xs text-[#888888]">
             Access your saved market gaps and search history.
           </p>
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="p-3.5 rounded-xl bg-[#2A1515] border border-red-500/30 text-xs text-red-200 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
+          <div className="p-3 rounded-lg bg-red-950/40 border border-red-900 text-xs text-red-400 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
             <span>{error}</span>
           </div>
         )}
@@ -89,7 +89,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email */}
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-[#A3A3A3]" htmlFor="email">
+            <label className="text-xs uppercase tracking-wider text-[#888888] font-medium block" htmlFor="email">
               Email Address
             </label>
             <input
@@ -100,14 +100,14 @@ export default function LoginPage() {
               placeholder="you@domain.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#151515] text-white border border-white/10 hover:border-white/25 focus:border-white/50 focus:outline-none text-sm transition-all placeholder:text-[#525252]"
+              className="w-full px-3.5 py-2.5 rounded-lg bg-[#0A0A0A] text-white border border-[#2A2A2A] hover:border-[#3A3A3A] focus:border-white focus:outline-none text-sm transition placeholder:text-[#555555]"
             />
           </div>
 
           {/* Password with Show/Hide Control */}
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-medium text-[#A3A3A3]" htmlFor="password">
+              <label className="text-xs uppercase tracking-wider text-[#888888] font-medium block" htmlFor="password">
                 Password
               </label>
             </div>
@@ -120,12 +120,12 @@ export default function LoginPage() {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-3.5 py-2.5 pr-10 rounded-xl bg-[#151515] text-white border border-white/10 hover:border-white/25 focus:border-white/50 focus:outline-none text-sm transition-all placeholder:text-[#525252]"
+                className="w-full px-3.5 py-2.5 pr-10 rounded-lg bg-[#0A0A0A] text-white border border-[#2A2A2A] hover:border-[#3A3A3A] focus:border-white focus:outline-none text-sm transition placeholder:text-[#555555]"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#737373] hover:text-white p-1 transition-colors"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#555555] hover:text-white p-1 transition-colors"
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -148,13 +148,13 @@ export default function LoginPage() {
         </form>
 
         {/* Link to Signup */}
-        <div className="pt-3 border-t border-white/10 text-center text-xs text-[#A3A3A3]">
+        <div className="pt-3 border-t border-[#1F1F1F] text-center text-xs text-[#888888]">
           Don't have an account yet?{' '}
           <Link href="/auth/signup" className="text-white hover:underline font-medium">
             Sign Up
           </Link>
         </div>
-      </GlassPanel>
+      </div>
     </div>
   );
 }

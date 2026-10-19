@@ -11,32 +11,38 @@ export default function Button({
   type = 'button',
   ...props
 }) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center transition select-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
+  // Size overrides if specifically requested; default is px-5 py-2.5 text-sm
   const sizeStyles = {
-    sm: 'text-xs px-3 py-1.5 rounded-lg gap-1.5',
-    md: 'text-sm px-4 py-2.5 rounded-xl gap-2',
-    lg: 'text-base px-6 py-3.5 rounded-xl gap-2.5'
+    sm: 'px-3 py-1.5 rounded-lg text-xs gap-1.5',
+    md: 'px-5 py-2.5 rounded-lg text-sm gap-2',
+    lg: 'px-6 py-3 rounded-lg text-base gap-2.5',
+    icon: 'p-2 rounded-md'
   };
 
   const variantStyles = {
-    primary: 'clay-btn-primary active:scale-[0.98]',
-    secondary: 'clay-btn-secondary text-[#EDEDED] active:scale-[0.98]',
-    outline: 'bg-transparent text-white border border-white/15 hover:border-white/35 hover:bg-white/[0.04] active:scale-[0.98] rounded-xl',
-    ghost: 'bg-transparent text-[#A3A3A3] hover:text-white hover:bg-white/[0.06] active:scale-[0.98] rounded-xl'
+    primary: 'bg-white text-black font-semibold hover:bg-neutral-200',
+    secondary: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]',
+    destructive: 'bg-transparent border border-red-800 text-red-400 hover:bg-red-950',
+    icon: 'p-2 rounded-md hover:bg-[#1A1A1A] text-[#888] hover:text-white',
+    ghost: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]', // alias to secondary
+    outline: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]'
   };
+
+  const appliedSize = variant === 'icon' ? '' : (sizeStyles[size] || sizeStyles.md);
 
   return (
     <button
       type={type}
       disabled={disabled || loading}
       onClick={onClick}
-      className={`${baseStyles} ${sizeStyles[size] || sizeStyles.md} ${variantStyles[variant] || variantStyles.primary} ${className}`}
+      className={`${baseStyles} ${appliedSize} ${variantStyles[variant] || variantStyles.primary} ${className}`}
       {...props}
     >
       {loading && (
         <svg
-          className="animate-spin -ml-0.5 h-4 w-4 text-current"
+          className="animate-spin -ml-0.5 mr-1.5 h-4 w-4 text-current"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
