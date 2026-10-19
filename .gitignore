@@ -1,0 +1,85 @@
+# ==========================================
+# StartupRival — Root Git Ignore
+# ==========================================
+
+# Environment variables & secrets (CRITICAL: Do NOT commit secrets)
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!.env.local.example
+
+# Node.js & Next.js
+node_modules/
+frontend/node_modules/
+.next/
+frontend/.next/
+out/
+frontend/out/
+build/
+frontend/build/
+.vercel/
+frontend/.vercel/
+
+# Logs & Debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python & Backend
+__pycache__/
+backend/**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/.venv/
+venv/
+.venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage/
+frontend/coverage/
+
+# OS Artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Configs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
