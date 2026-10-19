@@ -12,107 +12,21 @@ StartupRival is an AI-driven platform tailored specifically for aspiring Indian 
 
 ---
 
-## Complete Multi-Phase Feature Roadmap
-
-```mermaid
-graph LR
-    A[Phase 1: Market Gap Discovery] --> B[Phase 2: Actionable Roadmap & Radar]
-    B --> C[Phase 3: GTM, Funding & Community]
-    
-    subgraph Phase 1
-    A1[9 Sectors & 28 States]
-    A2[Demand Score 0-100]
-    A3[Validator Scorecard]
-    end
-    
-    subgraph Phase 2
-    B1[Kickstart Kit in INR]
-    B2[Official Govt Portals]
-    B3[Competitor Gap Cities]
-    B4[Side-by-Side Comparison]
-    end
-    
-    subgraph Phase 3
-    C1[GTM & First 100 Customers]
-    C2[30-Sec Funding Quiz]
-    C3[Founder Community Feed]
-    C4[PWA Offline Mode]
-    end
-```
-
-### Phase 1: The Core — Market Gap Discovery
-- **Regional Opportunity Engine:** Scans 9 sectors (*Agriculture, Food & Beverage, Technology, Healthcare, Education, Retail, Manufacturing, Services, Logistics*) across 28 Indian states.
-- **Idea Validator Scorecard:** Instant conviction evaluation featuring:
-  - Demand Score (0–100 scale)
-  - Demand Classification (*Real Consumer Demand* vs. *Trending Hype*)
-  - Competitor Density (*Low / Medium / High*)
-  - Population Fit against regional census datasets
-  - Expert AI synthesised verdict
-- **Workspace Bookmarking:** Save validated gaps to local workspace profile for persistent roadmap tracking.
-
-### Phase 2: The Actionable Startup Roadmap
-- **Startup Kickstart Kit (`/kickstart-kit/[id]`):**
-  - **A. Business Overview:** Concept, target customer persona, and hybrid monetization model.
-  - **B. Initial Investment (INR):** Machinery, setup, operating runway, and working capital buffers with clear assumptions.
-  - **C. Licenses & Registrations:** Verified direct links to official Indian government portals:
-    - *MSME Udyam Registration* ([udyamregistration.gov.in](https://udyamregistration.gov.in))
-    - *GST Invoicing ID* ([gst.gov.in](https://www.gst.gov.in))
-    - *FSSAI Food Safety License* ([foscos.fssai.gov.in](https://foscos.fssai.gov.in))
-    - *State Municipal Shop & Establishment Act*
-  - **D. Government Schemes & Subsidies:** Central and state incentives including PM FME (35% capital subsidy), Agriculture Infrastructure Fund (AIF 3% interest subvention), and PM Mudra Loan (Tarun scheme up to ₹10 Lakhs).
-  - **E. Location & Infrastructure:** Square footage, 3-phase power, logistics corridor requirements, and regional industrial corporation guidance (MIDC/KIADB/GIDC).
-  - **F. 90-Day Execution Roadmap:** Interactive checklist with progress percentage and instant **PDF Export**.
-- **Competitor Radar (`/competitor-radar/[id]`):**
-  - Incumbent tracking with headquarters, secondary cities, founded year, and funding stages.
-  - **Gap City Detection:** Computes major Indian cities with zero institutional competitor presence (e.g. Nashik, Nagpur, Solapur, Coimbatore).
-  - **Market Saturation Index:** Coverage percentage bar highlighting uncontested market share.
-- **Side-by-Side Idea Comparison:** Evaluate two saved opportunities across demand, capital, entry difficulty, and primary moats.
-- **Full Founder Dashboard (`/dashboard`):** 4-step progress tracker `[Gap Found] → [Validated] → [Kit Generated] → [Ready to Start]`, search history timeline with 1-click re-run, and saved gap manager.
-
-### Phase 3: The Full Entrepreneur Platform
-- **Go-To-Market Guide (`/gtm-guide/[id]`):**
-  - **Channel Matrix:** Indian vernacular channels (WhatsApp Business broadcast groups, Mandi gate live demonstrations, Instagram Reels, regional YouTube partnerships).
-  - **Pricing Strategy:** Psychology anchors against distress selling losses, suggested price ranges in INR, and entry trial structures.
-  - **First 100 Customers Plan:** Ordered 5-step tactic roadmap with budget allocations and timeline milestones.
-  - **Tier-2/3 City Playbook:** Offline-first trust-building tactics for non-metro districts.
-- **Funding Finder (`/funding`):**
-  - 3-Question Eligibility Quiz (*Stage, Target Capital, Incorporation Status*).
-  - Categorized Indian funding database: Government Grants (SISFS, NIDHI-PRAYAS), Angel Networks (IAN, Mumbai Angels), Accelerators (Antler India, Surge), and VCs.
-  - Personalized match reasoning (*"Why this fits you"*).
-- **Founder Community (`/community`):**
-  - Discussion feed with filtering (*Questions, Ideas, Success Stories, Resources*).
-  - Post creation with automated AI moderation guardrails.
-  - Interactive upvotes, comment threads, and automated "Weekly Top Market Gaps" post every Monday.
-- **Smart Notifications (`/notifications`):**
-  - Navbar bell dropdown with unread badge counter and full notification inbox.
-  - Configurable preferences in `/settings`.
-- **PWA Mobile Experience:**
-  - Fully installable via `manifest.json`.
-  - Service worker (`sw.js`) for offline caching.
-  - Sticky mobile bottom navigation (`Home`, `Find Gap`, `Dashboard`, `Funding`, `Community`).
-- **Admin Analytics Dashboard (`/admin`):**
-  - Real-time KPIs (Total founders, DAU/MAU, gap searches, kits generated).
-  - Visual sector demand charts and regional query rankings.
-  - 2:00 AM IST Railway nightly pre-computation cron diagnostics.
-
----
-
 ## Visual Identity & Design System
 
-StartupRival is crafted using a strict **minimalist monochrome design system**:
+StartupRival is crafted using a **cinematic blue glassmorphism design system**:
 
 | Element | Token / Spec | Purpose |
 | :--- | :--- | :--- |
-| **Main Background** | `#080808` | High-contrast, glare-free dark canvas |
-| **Card Surface** | `#151515` | Default card and container background |
-| **Elevated Surface** | `#1D1D1D` | Modals, active states, and elevated panels |
-| **Primary Text** | `#FFFFFF` | Maximum legibility and crisp typography |
-| **Secondary Text** | `#A3A3A3` | Supporting metadata, descriptions, and labels |
-| **Borders** | `rgba(255, 255, 255, 0.10)` | Restrained hairline dividers |
-| **Hover Borders** | `rgba(255, 255, 255, 0.25)` | Micro-interactions without neon distraction |
-| **Glassmorphism** | `backdrop-blur-md` | Floating sticky navigation and overlays |
-| **Claymorphism** | Inset white highlights | Tactile, premium action buttons and scorecards |
-| **Typography** | Inter | Modern, neutral geometric sans-serif |
+| **Main Background** | `#030712` | Near-black space canvas with dotted ambient particle grid |
+| **Card Surface** | `#08152B` (80–90%) | Deep translucent navy glass cards with `backdrop-blur-md` |
+| **Elevated Surface** | `#0C1E3D` | Active sidebar tabs, modal dialogs, and elevated panels |
+| **Electric Blue** | `#0866F5` | Primary CTA buttons, glowing rings, active pipeline stages |
+| **Luminous Cyan** | `#39BAFF` | Demand scores, badges, tags, active borders, verified evidence |
+| **Cool White** | `#F4F8FF` | Primary headings, prominent scores, and card titles |
+| **Secondary Text** | `#8EABCF` | Readable body copy, metrics descriptions, and breadcrumbs |
+| **Borders** | `rgba(57, 186, 255, 0.14)` | Hairline blue borders with realistic light reflections |
+| **Typography** | Inter | Modern, clean geometric sans-serif |
 
 ---
 
