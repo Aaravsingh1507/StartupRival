@@ -22,12 +22,12 @@ export default function Button({
   };
 
   const variantStyles = {
-    primary: 'bg-white text-black font-semibold hover:bg-neutral-200',
-    secondary: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]',
-    destructive: 'bg-transparent border border-red-800 text-red-400 hover:bg-red-950',
-    icon: 'p-2 rounded-md hover:bg-[#1A1A1A] text-[#888] hover:text-white',
-    ghost: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]', // alias to secondary
-    outline: 'bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A]'
+    primary: 'bg-[#0866F5] text-white font-semibold hover:bg-[#0756D1] border border-[#39BAFF]/40 shadow-[0_0_20px_rgba(8,102,245,0.45)] hover:shadow-[0_0_28px_rgba(8,102,245,0.7)]',
+    secondary: 'bg-[#08152B]/80 backdrop-blur-md border border-[#39BAFF]/25 text-[#F4F8FF] hover:bg-[#0C1E3D] hover:border-[#39BAFF]/50 hover:shadow-[0_0_16px_rgba(8,102,245,0.25)]',
+    destructive: 'bg-red-950/20 border border-red-500/40 text-red-300 hover:bg-red-950/40 hover:border-red-500/70',
+    icon: 'p-2 rounded-lg text-[#8EABCF] hover:text-[#F4F8FF] hover:bg-[#0866F5]/15 hover:border hover:border-[#39BAFF]/30',
+    ghost: 'bg-transparent text-[#8EABCF] hover:text-[#F4F8FF] hover:bg-[#0866F5]/10',
+    outline: 'bg-transparent border border-[#39BAFF]/30 text-[#F4F8FF] hover:bg-[#08152B] hover:border-[#39BAFF]/60'
   };
 
   const appliedSize = variant === 'icon' ? '' : (sizeStyles[size] || sizeStyles.md);

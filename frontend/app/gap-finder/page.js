@@ -13,7 +13,7 @@ import EmptyState from '@/components/EmptyState';
 import { findMarketGaps, validateIdea } from '@/lib/api';
 import { useAuth } from '@/lib/auth-context';
 import { useToast } from '@/lib/toast-context';
-import { Search, Info, SlidersHorizontal, RefreshCw, Radar } from 'lucide-react';
+import { Search, Info, SlidersHorizontal, RefreshCw } from 'lucide-react';
 
 function GapFinderContent() {
   const { user } = useAuth();
@@ -100,27 +100,33 @@ function GapFinderContent() {
   }) : [];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0A0A0A] text-[#F5F5F5] selection:bg-white selection:text-black">
+    <div className="min-h-screen flex flex-col bg-[#030712] text-[#F4F8FF] selection:bg-[#0866F5] selection:text-white relative overflow-hidden">
+      {/* Background dotted particle pattern & ambient halos */}
+      <div className="absolute inset-0 dotted-pattern opacity-30 pointer-events-none" />
+      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#0866F5]/10 rounded-full blur-[140px] pointer-events-none" />
+
       <Navbar />
 
-      <main className="flex-1 pt-20 pb-16">
+      <main className="flex-1 pt-24 pb-16 relative z-10">
         <div className="max-w-4xl mx-auto px-6 space-y-8">
           
           {/* Page Header */}
-          <div className="space-y-2">
-            <span className="text-label">Discovery Engine</span>
-            <h1 className="text-h1 text-white">
+          <div className="space-y-2.5">
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-[#39BAFF] px-2.5 py-0.5 rounded-full bg-[#0866F5]/15 border border-[#39BAFF]/30 inline-block">
+              Discovery Engine
+            </span>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#F4F8FF]">
               Discover Untapped Market Gaps in India
             </h1>
-            <p className="text-body text-[#888888]">
+            <p className="text-sm sm:text-base text-[#8EABCF] leading-relaxed max-w-2xl">
               Select an industry sector and Indian territory. Our engine cross-references real search spikes, local census densities, and supply shortages to reveal genuine business voids.
             </p>
           </div>
 
           {/* Discovery Form Card */}
-          <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-5 sm:p-6 space-y-6">
-            <form onSubmit={handleDiscoverGaps} className="space-y-5">
-              <div className="space-y-5">
+          <div className="bg-[#08152B]/85 backdrop-blur-xl border border-[#39BAFF]/25 rounded-2xl p-6 sm:p-8 space-y-6 shadow-[0_12px_45px_rgba(3,7,18,0.7)]">
+            <form onSubmit={handleDiscoverGaps} className="space-y-6">
+              <div className="space-y-6">
                 {/* 1. Sector Selector */}
                 <SectorSelector
                   selectedSector={sector}
@@ -135,9 +141,9 @@ function GapFinderContent() {
               </div>
 
               {/* Optional Text Field */}
-              <div className="space-y-1.5 pt-2 border-t border-[#1F1F1F]">
-                <label className="text-label block" htmlFor="interest">
-                  Optional: Describe your niche
+              <div className="space-y-2 pt-2 border-t border-[#39BAFF]/15">
+                <label className="text-xs uppercase tracking-wider text-[#8EABCF] font-medium block" htmlFor="interest">
+                  Optional: Describe your niche or problem in plain language
                 </label>
                 <input
                   id="interest"
@@ -145,14 +151,14 @@ function GapFinderContent() {
                   placeholder="e.g. Organic farming logistics, quick-commerce kirana tech, affordable diagnostic clinics..."
                   value={specificInterest}
                   onChange={(e) => setSpecificInterest(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#0A0A0A] text-white border border-[#2A2A2A] hover:border-[#3A3A3A] focus:border-white focus:outline-none text-sm transition placeholder:text-[#555555]"
+                  className="w-full px-4 py-3 rounded-xl bg-[#030712]/80 text-[#F4F8FF] border border-[#39BAFF]/25 hover:border-[#39BAFF]/50 focus:border-[#39BAFF] focus:ring-1 focus:ring-[#39BAFF]/50 focus:outline-none text-sm transition placeholder:text-[#4B6485]"
                 />
               </div>
 
               {/* Info Notice - Placed ABOVE the button */}
-              <div className="bg-[#111111] border border-[#2A2A2A] rounded-lg p-3 flex items-start gap-2">
-                <Info className="w-3.5 h-3.5 text-[#888888] shrink-0 mt-0.5" />
-                <p className="text-xs text-[#888888] leading-relaxed">
+              <div className="bg-[#0C1E3D]/80 border border-[#39BAFF]/25 rounded-xl p-3.5 flex items-start gap-3">
+                <Info className="w-4 h-4 text-[#39BAFF] shrink-0 mt-0.5" />
+                <p className="text-xs text-[#8EABCF] leading-relaxed">
                   StartupRival executes parallel scans across Google Trends query velocity, industrial cluster directories, and data.gov.in census indices to deliver 3 tailored opportunity dossiers.
                 </p>
               </div>
@@ -164,14 +170,14 @@ function GapFinderContent() {
                   variant="primary"
                   size="md"
                   loading={loading}
-                  className="w-full justify-center gap-2"
+                  className="w-full justify-center gap-2 py-3.5"
                 >
                   <Search className="w-4 h-4" />
                   <span>Discover Market Gaps</span>
                 </Button>
 
-                <p className="text-xs text-[#555555] text-center">
-                  Zero startup experience needed
+                <p className="text-xs text-[#4B6485] text-center font-medium">
+                  Zero startup experience needed • Beginner-friendly plain language research
                 </p>
               </div>
             </form>
@@ -180,13 +186,13 @@ function GapFinderContent() {
           {/* LOADING STATE */}
           {loading && (
             <div className="py-8">
-              <LoadingState message="Analyzing market signals for your region..." />
+              <LoadingState message="Analyzing market signals, census indices & Google Trends query velocity..." />
             </div>
           )}
 
           {/* VALIDATION SCORECARD MODAL */}
           {validatingIdea && (
-            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+            <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
               <div className="max-w-3xl w-full my-8">
                 <ValidatorScorecard
                   idea={validatingIdea}
@@ -200,27 +206,27 @@ function GapFinderContent() {
           {!loading && results && (
             <section className="space-y-6 pt-2">
               {/* Results Control Header */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-[#111111] border border-[#2A2A2A]">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#08152B]/85 border border-[#39BAFF]/20 backdrop-blur-md shadow-[0_8px_32px_rgba(3,7,18,0.5)]">
                 <div>
-                  <span className="text-label block">Market Opportunity Report</span>
-                  <h2 className="text-base font-semibold text-white mt-0.5">
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-[#39BAFF] block">Market Opportunity Report</span>
+                  <h2 className="text-lg font-bold text-[#F4F8FF] mt-0.5">
                     {sector} in {region}
                   </h2>
                 </div>
 
                 {/* Sort / Filter dropdown */}
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-xs text-[#888888]">
-                    <SlidersHorizontal className="w-3.5 h-3.5" />
+                  <div className="flex items-center gap-1.5 text-xs text-[#8EABCF]">
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-[#39BAFF]" />
                     <span>Sort:</span>
                   </div>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="px-3 py-1.5 rounded-lg bg-[#0A0A0A] text-white border border-[#2A2A2A] text-xs focus:outline-none cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-xl bg-[#030712]/90 text-[#F4F8FF] border border-[#39BAFF]/25 text-xs focus:outline-none cursor-pointer"
                   >
-                    <option value="default">Default Relevance</option>
-                    <option value="score-desc">Highest Demand Score</option>
+                    <option value="default" className="bg-[#08152B] text-white">Default Relevance</option>
+                    <option value="score-desc" className="bg-[#08152B] text-white">Highest Demand Score</option>
                   </select>
 
                   <Button
@@ -230,7 +236,7 @@ function GapFinderContent() {
                     className="text-xs gap-1.5"
                     title="Re-run analysis"
                   >
-                    <RefreshCw className="w-3 h-3" />
+                    <RefreshCw className="w-3 h-3 text-[#39BAFF]" />
                     <span>Re-run</span>
                   </Button>
                 </div>
@@ -272,7 +278,7 @@ function GapFinderContent() {
 
 export default function GapFinderPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#030712]" />}>
       <GapFinderContent />
     </Suspense>
   );

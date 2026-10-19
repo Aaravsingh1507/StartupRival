@@ -49,22 +49,22 @@ export default function StartupKitSection({ kit, onExportPdf }) {
   return (
     <div className="space-y-6">
       {/* Roadmap Progress Bar & Export Toolbar */}
-      <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <div className="space-y-1.5 flex-1 w-full">
+      <div className="bg-[#08152B]/85 backdrop-blur-xl border border-[#39BAFF]/25 rounded-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-[0_8px_32px_rgba(3,7,18,0.5)]">
+        <div className="space-y-2 flex-1 w-full">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-white font-medium flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-white" />
+            <span className="text-[#F4F8FF] font-semibold flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#39BAFF]" />
               <span>Launch Execution Progress</span>
             </span>
-            <span className="text-white font-mono font-bold">{progressPercent}% Ready</span>
+            <span className="text-[#39BAFF] font-mono font-bold">{progressPercent}% Ready</span>
           </div>
-          <div className="w-full h-1.5 rounded-full bg-[#1A1A1A] overflow-hidden">
+          <div className="w-full h-2 rounded-full bg-[#0C1E3D] overflow-hidden p-0.5 border border-[#39BAFF]/20">
             <div
-              className="h-full bg-white transition-all duration-500 rounded-full"
+              className="h-full bg-gradient-to-r from-[#0866F5] to-[#39BAFF] transition-all duration-500 rounded-full shadow-[0_0_10px_rgba(57,186,255,0.6)]"
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <p className="text-xs text-[#555555]">
+          <p className="text-xs text-[#4B6485]">
             {completedSteps.length} of {totalSteps} milestone tasks verified
           </p>
         </div>
@@ -75,7 +75,7 @@ export default function StartupKitSection({ kit, onExportPdf }) {
             onClick={onExportPdf}
             className="gap-2 text-xs w-full sm:w-auto justify-center"
           >
-            <Printer className="w-3.5 h-3.5" />
+            <Printer className="w-3.5 h-3.5 text-[#39BAFF]" />
             <span>Export Roadmap (PDF)</span>
           </Button>
         </div>
@@ -90,53 +90,55 @@ export default function StartupKitSection({ kit, onExportPdf }) {
           return (
             <div
               key={sec.id}
-              className={`rounded-xl border transition duration-200 overflow-hidden ${
-                isOpen ? 'bg-[#161616] border-[#2A2A2A]' : 'bg-[#111111] border-[#2A2A2A] hover:border-[#333333]'
+              className={`rounded-2xl border transition-all duration-300 overflow-hidden shadow-[0_8px_32px_rgba(3,7,18,0.4)] ${
+                isOpen 
+                  ? 'bg-[#08152B]/95 border-[#39BAFF]/40 shadow-[0_0_25px_rgba(8,102,245,0.15)]' 
+                  : 'bg-[#08152B]/70 border-[#39BAFF]/20 hover:border-[#39BAFF]/45'
               }`}
             >
               {/* Accordion Header */}
               <button
                 type="button"
                 onClick={() => setActiveSection(isOpen ? '' : sec.id)}
-                className="w-full px-5 py-4 flex items-center justify-between text-left cursor-pointer"
+                className="w-full px-6 py-4 flex items-center justify-between text-left cursor-pointer"
               >
-                <div className="flex items-center gap-3.5">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${
-                    isOpen ? 'bg-white text-black' : 'bg-[#1A1A1A] text-[#888888]'
+                <div className="flex items-center gap-4">
+                  <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors shadow-[0_0_12px_rgba(8,102,245,0.3)] ${
+                    isOpen ? 'bg-[#0866F5] text-white' : 'bg-[#0C1E3D] text-[#39BAFF]'
                   }`}>
                     <Icon className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-semibold text-white tracking-tight">{sec.title}</h3>
-                    <p className="text-xs text-[#888888]">{sec.desc}</p>
+                    <h3 className="text-sm font-bold text-[#F4F8FF] tracking-tight">{sec.title}</h3>
+                    <p className="text-xs text-[#8EABCF]">{sec.desc}</p>
                   </div>
                 </div>
 
-                <div className="text-[#888888] p-1">
+                <div className="text-[#39BAFF] p-1">
                   {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                 </div>
               </button>
 
               {/* Accordion Content Body */}
               {isOpen && (
-                <div className="px-5 pb-5 pt-2 border-t border-[#1F1F1F] space-y-4">
+                <div className="px-6 pb-6 pt-2 border-t border-[#39BAFF]/15 space-y-4">
                   
                   {/* A. Business Overview */}
                   {sec.id === 'overview' && (
                     <div className="space-y-3 text-xs">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                          <span className="text-xs uppercase tracking-wider text-[#888888] block">Business Concept</span>
-                          <p className="text-sm text-white font-medium">{kit.business_overview?.concept}</p>
+                        <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                          <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Business Concept</span>
+                          <p className="text-sm text-[#F4F8FF] font-medium">{kit.business_overview?.concept}</p>
                         </div>
-                        <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                          <span className="text-xs uppercase tracking-wider text-[#888888] block">Target Customers</span>
-                          <p className="text-sm text-[#888888]">{kit.business_overview?.target_customers}</p>
+                        <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                          <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Target Customers</span>
+                          <p className="text-sm text-[#8EABCF]">{kit.business_overview?.target_customers}</p>
                         </div>
                       </div>
-                      <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                        <span className="text-xs uppercase tracking-wider text-[#888888] block">Recommended Business Model</span>
-                        <p className="text-sm text-[#888888] leading-relaxed">{kit.business_overview?.business_model}</p>
+                      <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                        <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Recommended Business Model</span>
+                        <p className="text-sm text-[#8EABCF] leading-relaxed">{kit.business_overview?.business_model}</p>
                       </div>
                     </div>
                   )}
@@ -145,21 +147,21 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                   {sec.id === 'investment' && (
                     <div className="space-y-4">
                       {/* Range Visualizer Bar */}
-                      <div className="p-5 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-3">
+                      <div className="p-5 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-3">
                         <div className="flex items-baseline justify-between">
-                          <span className="text-xs uppercase tracking-wider text-[#888888]">Estimated Startup Capital</span>
+                          <span className="text-xs uppercase tracking-wider text-[#8EABCF] font-medium">Estimated Startup Capital</span>
                           <div className="text-right">
-                            <span className="text-xl font-bold font-mono text-white">
+                            <span className="text-xl font-bold font-mono text-[#39BAFF] drop-shadow-[0_0_10px_rgba(57,186,255,0.4)]">
                               ₹{(kit.capital_estimate?.min_inr / 100000).toFixed(1)}L – ₹{(kit.capital_estimate?.max_inr / 100000).toFixed(1)}L
                             </span>
-                            <span className="text-xs text-[#555555] ml-1">INR</span>
+                            <span className="text-xs text-[#8EABCF] ml-1">INR</span>
                           </div>
                         </div>
 
-                        <div className="w-full h-2 rounded-full bg-[#1A1A1A] relative overflow-hidden">
-                          <div className="absolute inset-y-0 left-[20%] right-[30%] bg-white rounded-full" />
+                        <div className="w-full h-2 rounded-full bg-[#0C1E3D] relative overflow-hidden border border-[#39BAFF]/20">
+                          <div className="absolute inset-y-0 left-[20%] right-[30%] bg-gradient-to-r from-[#0866F5] to-[#39BAFF] rounded-full shadow-[0_0_8px_rgba(57,186,255,0.8)]" />
                         </div>
-                        <div className="flex justify-between text-xs text-[#555555]">
+                        <div className="flex justify-between text-xs text-[#4B6485]">
                           <span>Lean Pilot: ₹{(kit.capital_estimate?.min_inr / 100000).toFixed(1)}L</span>
                           <span>Conservative Launch: ₹{(kit.capital_estimate?.max_inr / 100000).toFixed(1)}L</span>
                         </div>
@@ -168,14 +170,14 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                       {/* Cost Breakdown */}
                       {kit.capital_estimate?.breakdown && (
                         <div className="space-y-2">
-                          <h4 className="text-xs uppercase tracking-wider text-[#888888]">
+                          <h4 className="text-xs uppercase tracking-wider text-[#8EABCF] font-medium">
                             Capital Allocation Breakdown
                           </h4>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             {Object.entries(kit.capital_estimate.breakdown).map(([item, cost]) => (
-                              <div key={item} className="p-3 rounded-lg bg-[#111111] border border-[#1F1F1F] flex items-center justify-between text-xs">
-                                <span className="text-[#888888]">{item}</span>
-                                <span className="text-white font-mono font-medium">₹{cost.toLocaleString('en-IN')}</span>
+                              <div key={item} className="p-3.5 rounded-xl bg-[#08152B] border border-[#39BAFF]/20 flex items-center justify-between text-xs">
+                                <span className="text-[#8EABCF]">{item}</span>
+                                <span className="text-[#F4F8FF] font-mono font-bold">₹{cost.toLocaleString('en-IN')}</span>
                               </div>
                             ))}
                           </div>
@@ -184,9 +186,9 @@ export default function StartupKitSection({ kit, onExportPdf }) {
 
                       {/* Assumptions */}
                       {kit.capital_estimate?.assumptions && (
-                        <div className="p-3.5 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                          <span className="text-xs uppercase tracking-wider text-[#888888] block">Estimation Assumptions:</span>
-                          <ul className="list-disc list-inside text-xs text-[#888888] space-y-0.5">
+                        <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                          <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Estimation Assumptions:</span>
+                          <ul className="list-disc list-inside text-xs text-[#8EABCF] space-y-0.5">
                             {kit.capital_estimate.assumptions.map((ass, i) => (
                               <li key={i}>{ass}</li>
                             ))}
@@ -201,25 +203,25 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                     <div className="space-y-3">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {kit.licenses?.map((lic, idx) => (
-                          <div key={idx} className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] flex flex-col justify-between space-y-3">
+                          <div key={idx} className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 flex flex-col justify-between space-y-3">
                             <div className="space-y-1.5">
                               <div className="flex items-center justify-between">
-                                <span className="text-xs font-semibold text-white">{lic.name}</span>
-                                <span className="text-xs px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] text-white">
+                                <span className="text-xs font-bold text-[#F4F8FF]">{lic.name}</span>
+                                <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#0C1E3D] border border-[#39BAFF]/30 text-[#39BAFF] font-mono">
                                   {lic.timeframe}
                                 </span>
                               </div>
-                              <p className="text-xs text-[#888888] leading-relaxed">{lic.description}</p>
+                              <p className="text-xs text-[#8EABCF] leading-relaxed">{lic.description}</p>
                             </div>
 
                             <a
                               href={lic.portal_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs text-white hover:text-[#888888] pt-2 border-t border-[#1F1F1F] transition"
+                              className="inline-flex items-center gap-1.5 text-xs text-[#39BAFF] hover:underline pt-2 border-t border-[#39BAFF]/15 transition font-medium"
                             >
                               <span>Official Application Portal</span>
-                              <ExternalLink className="w-3 h-3 text-[#555555]" />
+                              <ExternalLink className="w-3 h-3 text-[#39BAFF]" />
                             </a>
                           </div>
                         ))}
@@ -231,25 +233,25 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                   {sec.id === 'schemes' && (
                     <div className="space-y-3">
                       {kit.schemes?.map((scm, idx) => (
-                        <div key={idx} className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-2.5">
+                        <div key={idx} className="p-5 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-2.5">
                           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                            <h4 className="text-sm font-semibold text-white">{scm.name}</h4>
-                            <span className="text-xs px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] text-[#888888]">
+                            <h4 className="text-sm font-bold text-[#F4F8FF]">{scm.name}</h4>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#0C1E3D] border border-[#39BAFF]/30 text-[#39BAFF]">
                               {scm.agency || 'Govt of India'}
                             </span>
                           </div>
-                          <p className="text-xs text-[#F5F5F5] leading-relaxed"><strong className="text-white">Subsidy Benefit:</strong> {scm.benefit}</p>
-                          <p className="text-xs text-[#888888]"><strong className="text-white">Eligibility:</strong> {scm.eligibility}</p>
+                          <p className="text-xs text-[#F4F8FF] leading-relaxed"><strong className="text-[#39BAFF]">Subsidy Benefit:</strong> {scm.benefit}</p>
+                          <p className="text-xs text-[#8EABCF]"><strong className="text-[#F4F8FF]">Eligibility:</strong> {scm.eligibility}</p>
                           
                           <div className="pt-2">
                             <a
                               href={scm.apply_url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg bg-transparent border border-[#2A2A2A] text-white hover:bg-[#1A1A1A] transition"
+                              className="inline-flex items-center gap-1.5 text-xs px-3.5 py-1.5 rounded-xl bg-[#0C1E3D]/80 border border-[#39BAFF]/30 text-[#F4F8FF] hover:bg-[#0866F5]/25 hover:border-[#39BAFF]/60 transition font-medium"
                             >
                               <span>Scheme Details & Application</span>
-                              <ExternalLink className="w-3 h-3 text-[#555555]" />
+                              <ExternalLink className="w-3 h-3 text-[#39BAFF]" />
                             </a>
                           </div>
                         </div>
@@ -260,17 +262,17 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                   {/* E. Location & Infrastructure */}
                   {sec.id === 'location' && (
                     <div className="space-y-3 text-xs">
-                      <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                        <span className="text-xs uppercase tracking-wider text-[#888888] block">Space & Facility Requirements</span>
-                        <p className="text-sm text-white font-medium">{kit.location_advice?.space_required}</p>
+                      <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                        <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Space & Facility Requirements</span>
+                        <p className="text-sm text-[#F4F8FF] font-medium">{kit.location_advice?.space_required}</p>
                       </div>
-                      <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                        <span className="text-xs uppercase tracking-wider text-[#888888] block">Logistics & Connectivity Access</span>
-                        <p className="text-sm text-[#888888]">{kit.location_advice?.logistics_access}</p>
+                      <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                        <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Logistics & Connectivity Access</span>
+                        <p className="text-sm text-[#8EABCF]">{kit.location_advice?.logistics_access}</p>
                       </div>
-                      <div className="p-4 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1">
-                        <span className="text-xs uppercase tracking-wider text-[#888888] block">Regional Practical Advice</span>
-                        <p className="text-sm text-[#888888] leading-relaxed">{kit.location_advice?.regional_tip}</p>
+                      <div className="p-4 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/20 space-y-1">
+                        <span className="text-xs uppercase tracking-wider text-[#8EABCF] block font-medium">Regional Practical Advice</span>
+                        <p className="text-sm text-[#8EABCF] leading-relaxed">{kit.location_advice?.regional_tip}</p>
                       </div>
                     </div>
                   )}
@@ -278,9 +280,9 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                   {/* F. Step-by-Step Launch Roadmap Checklist */}
                   {sec.id === 'roadmap' && (
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between text-xs text-[#888888] pb-1">
+                      <div className="flex items-center justify-between text-xs text-[#8EABCF] pb-1">
                         <span>Click each task to update your progress:</span>
-                        <span className="text-white">Estimated Launch: ~{kit.timeline_months} Months</span>
+                        <span className="text-[#39BAFF] font-semibold">Estimated Launch: ~{kit.timeline_months} Months</span>
                       </div>
 
                       <div className="space-y-2">
@@ -291,29 +293,29 @@ export default function StartupKitSection({ kit, onExportPdf }) {
                             <div
                               key={stepItem.step}
                               onClick={() => toggleStep(stepItem.step)}
-                              className={`p-3.5 rounded-lg border flex items-start gap-3.5 transition cursor-pointer ${
+                              className={`p-4 rounded-xl border flex items-start gap-3.5 transition-all duration-200 cursor-pointer ${
                                 isDone
-                                  ? 'bg-[#111111] border-[#2A2A2A] text-white'
-                                  : 'bg-[#0A0A0A] border-[#1F1F1F] text-[#888888] hover:border-[#2A2A2A]'
+                                  ? 'bg-[#08152B]/90 border-[#39BAFF]/40 text-[#F4F8FF] shadow-[0_0_15px_rgba(8,102,245,0.15)]'
+                                  : 'bg-[#030712]/60 border-[#39BAFF]/15 text-[#8EABCF] hover:border-[#39BAFF]/30'
                               }`}
                             >
                               <div className="pt-0.5">
                                 {isDone ? (
-                                  <CheckSquare className="w-4 h-4 text-white" />
+                                  <CheckSquare className="w-4 h-4 text-[#39BAFF] shadow-[0_0_6px_rgba(57,186,255,0.6)]" />
                                 ) : (
-                                  <Square className="w-4 h-4 text-[#555555]" />
+                                  <Square className="w-4 h-4 text-[#4B6485]" />
                                 )}
                               </div>
                               <div className="flex-1 space-y-1">
                                 <div className="flex items-center justify-between">
-                                  <span className={`text-xs font-semibold ${isDone ? 'line-through text-[#555555]' : 'text-white'}`}>
+                                  <span className={`text-xs font-bold ${isDone ? 'line-through text-[#4B6485]' : 'text-[#F4F8FF]'}`}>
                                     Step {stepItem.step}
                                   </span>
-                                  <span className="text-[10px] text-[#888888] px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A]">
+                                  <span className="text-[10px] text-[#39BAFF] px-2.5 py-0.5 rounded-full bg-[#0C1E3D] border border-[#39BAFF]/30 font-mono">
                                     {stepItem.timeline}
                                   </span>
                                 </div>
-                                <p className={`text-xs leading-relaxed ${isDone ? 'line-through text-[#555555]' : 'text-[#888888]'}`}>
+                                <p className={`text-xs leading-relaxed ${isDone ? 'line-through text-[#4B6485]' : 'text-[#8EABCF]'}`}>
                                   {stepItem.action}
                                 </p>
                               </div>
@@ -333,4 +335,3 @@ export default function StartupKitSection({ kit, onExportPdf }) {
     </div>
   );
 }
-

@@ -90,21 +90,20 @@ export default function CommunityFeed({ initialPosts = [] }) {
     const t = type.toLowerCase();
     if (t.includes('question')) {
       return (
-        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-blue-950 text-blue-400 border border-blue-900">
+        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#0866F5]/20 text-[#39BAFF] border border-[#39BAFF]/40">
           QUESTION
         </span>
       );
     }
     if (t.includes('success')) {
       return (
-        <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-green-950 text-green-400 border border-green-900">
+        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-green-950/70 text-green-400 border border-green-500/40">
           SUCCESS
         </span>
       );
     }
-    // Default to SOURCE / RESOURCE badge style
     return (
-      <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#1A1A1A] text-[#888888] border border-[#2A2A2A]">
+      <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#0C1E3D] text-[#8EABCF] border border-[#39BAFF]/20">
         {type.toUpperCase()}
       </span>
     );
@@ -115,7 +114,7 @@ export default function CommunityFeed({ initialPosts = [] }) {
       {/* Top Filter Bar & Create Action */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
         {/* Post type filter tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
           {[
             { id: 'all', label: 'All Discussions' },
             { id: 'question', label: 'Questions' },
@@ -127,10 +126,10 @@ export default function CommunityFeed({ initialPosts = [] }) {
               key={tab.id}
               type="button"
               onClick={() => setSelectedType(tab.id)}
-              className={`rounded-lg px-4 py-1.5 text-sm transition whitespace-nowrap ${
+              className={`rounded-xl px-4 py-2 text-sm transition-all duration-200 whitespace-nowrap cursor-pointer ${
                 selectedType === tab.id
-                  ? 'bg-white text-black font-medium'
-                  : 'text-[#888888] hover:text-white'
+                  ? 'bg-[#0866F5] text-white font-semibold shadow-[0_0_15px_rgba(8,102,245,0.6)] border border-[#39BAFF]/40'
+                  : 'text-[#8EABCF] hover:text-[#F4F8FF] hover:bg-[#0C1E3D]/50 border border-transparent'
               }`}
             >
               {tab.label}
@@ -143,11 +142,11 @@ export default function CommunityFeed({ initialPosts = [] }) {
           <select
             value={selectedSector}
             onChange={(e) => setSelectedSector(e.target.value)}
-            className="bg-[#0A0A0A] border border-[#2A2A2A] rounded-lg px-3 py-2 text-sm text-white focus:border-white focus:outline-none transition cursor-pointer"
+            className="bg-[#030712]/90 border border-[#39BAFF]/25 rounded-xl px-3.5 py-2 text-sm text-[#F4F8FF] focus:border-[#39BAFF] focus:outline-none transition cursor-pointer"
           >
             <option value="all">All Sectors</option>
             {SECTORS.map((s) => (
-              <option key={s.id} value={s.name}>{s.name}</option>
+              <option key={s.id} value={s.name} className="bg-[#08152B] text-white">{s.name}</option>
             ))}
           </select>
 
@@ -162,10 +161,10 @@ export default function CommunityFeed({ initialPosts = [] }) {
         </div>
       </div>
 
-      {/* Posts Feed: Consistent vertical rhythm gap-0 between cards, divider handles spacing */}
-      <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl overflow-hidden divide-y divide-[#1F1F1F]">
+      {/* Posts Feed */}
+      <div className="bg-[#08152B]/85 backdrop-blur-xl border border-[#39BAFF]/20 rounded-2xl overflow-hidden divide-y divide-[#39BAFF]/15 shadow-[0_12px_45px_rgba(3,7,18,0.5)]">
         {filteredPosts.length === 0 ? (
-          <div className="p-8 text-center text-sm text-[#888888]">
+          <div className="p-8 text-center text-sm text-[#8EABCF]">
             No posts found for the selected filters.
           </div>
         ) : (
@@ -175,18 +174,18 @@ export default function CommunityFeed({ initialPosts = [] }) {
             return (
               <div 
                 key={post.id} 
-                className="p-5 border-b border-[#1F1F1F] last:border-b-0 space-y-3"
+                className="p-6 space-y-3 hover:bg-[#0C1E3D]/30 transition"
               >
                 {/* Author + Timestamp & Post Type Badge */}
                 <div className="flex items-center justify-between gap-3">
-                  <div className="text-xs text-[#555555] flex items-center gap-2">
-                    <span className="font-medium text-white">{post.author_name}</span>
+                  <div className="text-xs text-[#8EABCF] flex items-center gap-2">
+                    <span className="font-semibold text-[#F4F8FF]">{post.author_name}</span>
                     <span>•</span>
-                    <span>{post.sector || 'General'}</span>
+                    <span className="text-[#39BAFF]">{post.sector || 'General'}</span>
                     <span>•</span>
                     <span>{post.region || 'All India'}</span>
                     <span>•</span>
-                    <span>{new Date(post.created_at).toLocaleDateString()}</span>
+                    <span className="text-[#4B6485] font-mono">{new Date(post.created_at).toLocaleDateString()}</span>
                   </div>
 
                   <div>
@@ -195,25 +194,25 @@ export default function CommunityFeed({ initialPosts = [] }) {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base font-semibold text-white leading-snug mt-1">
+                <h3 className="text-base font-bold text-[#F4F8FF] leading-snug mt-1">
                   {post.title}
                 </h3>
 
-                {/* Body: text-sm text-[#888] leading-relaxed mt-1 line-clamp-2 */}
-                <p className="text-sm text-[#888888] leading-relaxed mt-1 line-clamp-2 whitespace-pre-line">
+                {/* Body */}
+                <p className="text-sm text-[#8EABCF] leading-relaxed mt-1 line-clamp-2 whitespace-pre-line">
                   {post.body}
                 </p>
 
-                {/* Footer row: upvotes + replies count in text-xs text-[#555], Verified Founder Thread badge right-aligned */}
-                <div className="pt-2 flex items-center justify-between text-xs text-[#555555]">
+                {/* Footer row: upvotes + replies count */}
+                <div className="pt-2 flex items-center justify-between text-xs text-[#8EABCF]">
                   <div className="flex items-center gap-4">
                     <button
                       type="button"
                       onClick={() => handleUpvote(post.id)}
-                      className="flex items-center gap-1.5 hover:text-white transition cursor-pointer"
+                      className="flex items-center gap-1.5 hover:text-[#39BAFF] transition cursor-pointer"
                     >
-                      <ThumbsUp className="w-3.5 h-3.5" />
-                      <span>{post.upvotes}</span>
+                      <ThumbsUp className="w-3.5 h-3.5 text-[#39BAFF]" />
+                      <span className="font-mono">{post.upvotes}</span>
                     </button>
 
                     <button
@@ -221,31 +220,31 @@ export default function CommunityFeed({ initialPosts = [] }) {
                       onClick={() =>
                         setExpandedComments((prev) => ({ ...prev, [post.id]: !isCommentsOpen }))
                       }
-                      className="flex items-center gap-1.5 hover:text-white transition cursor-pointer"
+                      className="flex items-center gap-1.5 hover:text-[#39BAFF] transition cursor-pointer"
                     >
-                      <MessageSquare className="w-3.5 h-3.5" />
+                      <MessageSquare className="w-3.5 h-3.5 text-[#39BAFF]" />
                       <span>{post.comment_count || (post.comments?.length || 0)} Replies</span>
                     </button>
                   </div>
 
-                  <span className="text-xs text-[#555555]">
+                  <span className="text-xs text-[#4B6485]">
                     Verified Founder Thread
                   </span>
                 </div>
 
                 {/* Expanded Comments Thread */}
                 {isCommentsOpen && (
-                  <div className="pt-3 mt-3 border-t border-[#1F1F1F] space-y-3">
+                  <div className="pt-3 mt-3 border-t border-[#39BAFF]/15 space-y-3">
                     <div className="space-y-2">
                       {post.comments?.map((c, i) => (
-                        <div key={i} className="p-3 rounded-lg bg-[#0A0A0A] border border-[#1F1F1F] space-y-1 text-xs">
+                        <div key={i} className="p-3.5 rounded-xl bg-[#030712]/70 border border-[#39BAFF]/15 space-y-1 text-xs">
                           <div className="flex items-center justify-between text-[11px]">
-                            <span className="font-semibold text-white">{c.author_name}</span>
-                            <span className="text-[#555555]">
+                            <span className="font-semibold text-[#F4F8FF]">{c.author_name}</span>
+                            <span className="text-[#4B6485] font-mono">
                               {new Date(c.created_at).toLocaleDateString()}
                             </span>
                           </div>
-                          <p className="text-[#888888] leading-relaxed">{c.body}</p>
+                          <p className="text-[#8EABCF] leading-relaxed">{c.body}</p>
                         </div>
                       ))}
                     </div>
@@ -262,7 +261,7 @@ export default function CommunityFeed({ initialPosts = [] }) {
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') handleAddComment(post.id);
                         }}
-                        className="flex-1 px-3 py-2 rounded-lg bg-[#0A0A0A] text-white border border-[#2A2A2A] text-xs focus:border-white focus:outline-none"
+                        className="flex-1 px-3.5 py-2 rounded-xl bg-[#030712]/90 text-[#F4F8FF] border border-[#39BAFF]/25 text-xs focus:border-[#39BAFF] focus:outline-none"
                       />
                       <Button
                         variant="primary"
@@ -289,4 +288,3 @@ export default function CommunityFeed({ initialPosts = [] }) {
     </div>
   );
 }
-

@@ -15,23 +15,23 @@ export default function EmptyState({
   const renderIcon = () => {
     switch (icon) {
       case 'bookmark':
-        return <Bookmark className="w-8 h-8 text-[#888888]" />;
+        return <Bookmark className="w-8 h-8 text-[#39BAFF]" />;
       case 'search':
-        return <Search className="w-8 h-8 text-[#888888]" />;
+        return <Search className="w-8 h-8 text-[#39BAFF]" />;
       case 'compass':
       default:
-        return <Compass className="w-8 h-8 text-[#888888]" />;
+        return <Compass className="w-8 h-8 text-[#39BAFF]" />;
     }
   };
 
   return (
-    <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-8 text-center max-w-md mx-auto space-y-4">
-      <div className="w-12 h-12 rounded-xl bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center mx-auto text-[#888888]">
+    <div className="bg-[#08152B]/85 backdrop-blur-xl border border-[#39BAFF]/20 rounded-2xl p-8 sm:p-10 text-center max-w-md mx-auto space-y-4 shadow-[0_12px_40px_rgba(3,7,18,0.5)]">
+      <div className="w-14 h-14 rounded-2xl bg-[#0C1E3D] border border-[#39BAFF]/30 flex items-center justify-center mx-auto text-[#39BAFF] shadow-[0_0_20px_rgba(8,102,245,0.3)]">
         {renderIcon()}
       </div>
       <div className="space-y-1.5">
-        <h4 className="text-base font-semibold text-white tracking-tight">{title}</h4>
-        <p className="text-xs text-[#888888] leading-relaxed max-w-xs mx-auto">
+        <h4 className="text-base font-bold text-[#F4F8FF] tracking-tight">{title}</h4>
+        <p className="text-xs text-[#8EABCF] leading-relaxed max-w-xs mx-auto">
           {description}
         </p>
       </div>

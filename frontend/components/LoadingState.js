@@ -21,30 +21,30 @@ export default function LoadingState({ message = 'Analyzing market signals...' }
   }, []);
 
   return (
-    <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-8 max-w-lg mx-auto text-center space-y-6">
-      {/* Monochrome Minimal Spinner & Pulse */}
-      <div className="relative w-14 h-14 mx-auto flex items-center justify-center">
-        <div className="absolute inset-0 rounded-full border-2 border-[#2A2A2A]" />
-        <div className="absolute inset-0 rounded-full border-2 border-t-white border-r-white/30 border-b-transparent border-l-transparent animate-spin" />
-        <div className="w-3.5 h-3.5 rounded-full bg-white/20 animate-pulse-subtle" />
+    <div className="bg-[#08152B]/90 backdrop-blur-xl border border-[#39BAFF]/30 rounded-2xl p-8 max-w-lg mx-auto text-center space-y-6 shadow-[0_12px_45px_rgba(3,7,18,0.7)]">
+      {/* Electric Blue & Cyan Futuristic Spinner */}
+      <div className="relative w-16 h-16 mx-auto flex items-center justify-center">
+        <div className="absolute inset-0 rounded-full border-2 border-[#39BAFF]/20" />
+        <div className="absolute inset-0 rounded-full border-2 border-t-[#39BAFF] border-r-[#0866F5] border-b-transparent border-l-transparent animate-spin shadow-[0_0_15px_rgba(57,186,255,0.5)]" />
+        <div className="w-4 h-4 rounded-full bg-[#0866F5] shadow-[0_0_10px_rgba(8,102,245,0.8)] animate-pulse" />
       </div>
 
       <div className="space-y-2">
-        <h3 className="text-base font-semibold text-white tracking-tight">{message}</h3>
-        <p className="text-xs text-[#888888] font-mono h-5 transition-all duration-300">
+        <h3 className="text-base font-bold text-[#F4F8FF] tracking-tight">{message}</h3>
+        <p className="text-xs text-[#39BAFF] font-mono h-5 transition-all duration-300">
           {ANALYSIS_PHASES[phaseIndex]}
         </p>
       </div>
 
-      {/* Subtle Step Bar */}
-      <div className="w-48 mx-auto h-1 rounded-full bg-[#1A1A1A] overflow-hidden">
+      {/* Electric Blue Gradient Step Bar */}
+      <div className="w-56 mx-auto h-1.5 rounded-full bg-[#0C1E3D] overflow-hidden border border-[#39BAFF]/20 p-0.5">
         <div
-          className="h-full bg-white transition-all duration-700 ease-out"
+          className="h-full bg-gradient-to-r from-[#0866F5] to-[#39BAFF] rounded-full transition-all duration-700 ease-out shadow-[0_0_8px_rgba(57,186,255,0.8)]"
           style={{ width: `${((phaseIndex + 1) / ANALYSIS_PHASES.length) * 100}%` }}
         />
       </div>
 
-      <p className="text-xs text-[#555555] tracking-wide">
+      <p className="text-xs text-[#8EABCF] tracking-wide">
         Cross-referencing verified Indian trade, search, and demographic registers
       </p>
     </div>

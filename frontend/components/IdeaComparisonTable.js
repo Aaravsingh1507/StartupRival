@@ -1,7 +1,6 @@
 'use client';
 
 import { Check, X, Scale } from 'lucide-react';
-import ClayCard from './ClayCard';
 import Button from './Button';
 
 export default function IdeaComparisonTable({ comparison, onClose }) {
@@ -23,23 +22,23 @@ export default function IdeaComparisonTable({ comparison, onClose }) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-[#F4F8FF]">
       {/* Header */}
-      <div className="flex items-center justify-between pb-4 border-b border-[#1F1F1F]">
+      <div className="flex items-center justify-between pb-4 border-b border-[#39BAFF]/20">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <Scale className="w-4 h-4 text-white" />
-            <span className="text-xs uppercase tracking-wider text-[#888888]">
+            <Scale className="w-4 h-4 text-[#39BAFF]" />
+            <span className="text-xs uppercase tracking-wider text-[#39BAFF] font-semibold">
               Side-by-Side Trade-off Analysis
             </span>
           </div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Compare Startup Opportunities</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#F4F8FF] tracking-tight">Compare Startup Opportunities</h2>
         </div>
 
         {onClose && (
           <button
             onClick={onClose}
-            className="p-2 rounded-md text-[#888888] hover:text-white bg-[#1A1A1A] border border-[#2A2A2A] transition"
+            className="p-2 rounded-xl text-[#8EABCF] hover:text-white bg-[#0C1E3D] border border-[#39BAFF]/30 hover:border-[#39BAFF]/60 transition cursor-pointer"
           >
             ✕
           </button>
@@ -47,45 +46,45 @@ export default function IdeaComparisonTable({ comparison, onClose }) {
       </div>
 
       {/* Comparison Table */}
-      <div className="overflow-x-auto rounded-xl border border-[#2A2A2A] bg-[#111111]">
+      <div className="overflow-x-auto rounded-2xl border border-[#39BAFF]/25 bg-[#08152B]/90 backdrop-blur-md shadow-[0_8px_32px_rgba(3,7,18,0.5)]">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-[#2A2A2A] bg-[#1A1A1A]">
-              <th className="p-4 text-[#888888] font-medium w-1/4">Evaluation Vector</th>
-              <th className="p-4 text-white font-semibold w-3/8 border-l border-[#2A2A2A]">
-                <span className="text-[10px] uppercase tracking-wider text-[#555555] block">Option A</span>
-                <span className="text-sm block">{idea_1.name}</span>
-                <span className="text-xs text-[#888888] font-normal">{idea_1.sector} • {idea_1.region}</span>
+            <tr className="border-b border-[#39BAFF]/20 bg-[#0C1E3D]/80">
+              <th className="p-4 text-[#8EABCF] font-semibold w-1/4">Evaluation Vector</th>
+              <th className="p-4 text-[#F4F8FF] font-bold w-3/8 border-l border-[#39BAFF]/20">
+                <span className="text-[10px] uppercase tracking-wider text-[#39BAFF] block font-mono">Option A</span>
+                <span className="text-sm block text-[#F4F8FF]">{idea_1.name}</span>
+                <span className="text-xs text-[#8EABCF] font-normal">{idea_1.sector} • {idea_1.region}</span>
               </th>
-              <th className="p-4 text-white font-semibold w-3/8 border-l border-[#2A2A2A]">
-                <span className="text-[10px] uppercase tracking-wider text-[#555555] block">Option B</span>
-                <span className="text-sm block">{idea_2.name}</span>
-                <span className="text-xs text-[#888888] font-normal">{idea_2.sector} • {idea_2.region}</span>
+              <th className="p-4 text-[#F4F8FF] font-bold w-3/8 border-l border-[#39BAFF]/20">
+                <span className="text-[10px] uppercase tracking-wider text-[#39BAFF] block font-mono">Option B</span>
+                <span className="text-sm block text-[#F4F8FF]">{idea_2.name}</span>
+                <span className="text-xs text-[#8EABCF] font-normal">{idea_2.sector} • {idea_2.region}</span>
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#1F1F1F]">
+          <tbody className="divide-y divide-[#39BAFF]/15">
             {comparisonRows.map((row, idx) => (
-              <tr key={idx} className="hover:bg-white/[0.02] transition-colors">
-                <td className="p-4 text-[#888888] font-medium bg-[#111111]">{row.label}</td>
-                <td className="p-4 text-[#F5F5F5] border-l border-[#2A2A2A] leading-relaxed">
+              <tr key={idx} className="hover:bg-[#0866F5]/10 transition-colors">
+                <td className="p-4 text-[#8EABCF] font-medium bg-[#08152B]/60">{row.label}</td>
+                <td className="p-4 text-[#F4F8FF] border-l border-[#39BAFF]/15 leading-relaxed">
                   {row.badge ? (
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] text-white text-xs font-medium">
-                      <span className="w-1.5 h-1.5 rotate-45 bg-white inline-block" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0866F5]/20 border border-[#39BAFF]/40 text-[#39BAFF] text-xs font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
                       {row.val1}
                     </span>
                   ) : (
-                    <span className={row.mono ? 'font-mono text-white font-semibold' : ''}>{row.val1}</span>
+                    <span className={row.mono ? 'font-mono text-[#39BAFF] font-bold' : ''}>{row.val1}</span>
                   )}
                 </td>
-                <td className="p-4 text-[#F5F5F5] border-l border-[#2A2A2A] leading-relaxed">
+                <td className="p-4 text-[#F4F8FF] border-l border-[#39BAFF]/15 leading-relaxed">
                   {row.badge ? (
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#1A1A1A] border border-[#2A2A2A] text-white text-xs font-medium">
-                      <span className="w-1.5 h-1.5 rotate-45 bg-white inline-block" />
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0866F5]/20 border border-[#39BAFF]/40 text-[#39BAFF] text-xs font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" />
                       {row.val2}
                     </span>
                   ) : (
-                    <span className={row.mono ? 'font-mono text-white font-semibold' : ''}>{row.val2}</span>
+                    <span className={row.mono ? 'font-mono text-[#39BAFF] font-bold' : ''}>{row.val2}</span>
                   )}
                 </td>
               </tr>
@@ -94,9 +93,9 @@ export default function IdeaComparisonTable({ comparison, onClose }) {
         </table>
       </div>
 
-      <div className="p-4 rounded-xl bg-[#111111] border border-[#2A2A2A] text-xs text-[#888888] flex items-center justify-between">
+      <div className="p-5 rounded-2xl bg-[#0C1E3D]/80 border border-[#39BAFF]/25 text-xs text-[#8EABCF] flex items-center justify-between">
         <p className="leading-relaxed">
-          <strong className="text-white">Strategic Trade-off Summary:</strong> Option A requires higher capital with stronger government subsidy backing. Option B requires lower upfront setup with higher repeat consumer frequency.
+          <strong className="text-[#39BAFF]">Strategic Trade-off Summary:</strong> Option A requires higher capital with stronger government subsidy backing. Option B requires lower upfront setup with higher repeat consumer frequency.
         </p>
       </div>
     </div>
